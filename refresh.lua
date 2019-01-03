@@ -1,11 +1,11 @@
 -- get file from remote server
--- udpates existing file 
-local function refresh() 
-  if fs.exists(REPOSITORY_HOME) then
-    git.reset(REPOSITORY_HOME, "origin/master", "hard")
-    git.pull(REPOSITORY_HOME, "origin", "master")
+-- udpates existing file
+local function refresh()
+  if fs.exists(config["REPOSITORY_HOME"]) then
+    git.reset(config["REPOSITORY_HOME"], "origin/master", "hard")
+    git.pull(config["REPOSITORY_HOME"], "origin", "master")
   else
-    fetch(REPOSITORY_URL, "", REPOSITORY_HOME)
+    fetch(config["REPOSITORY_URL"], "", config["REPOSITORY_HOME"])
   end
 end
 

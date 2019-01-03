@@ -1,0 +1,10 @@
+REPOSITORY_URL = "https://github.com/foundpatterns/packages"
+MANIFEST_FILE = "manifest.scl"
+
+# SCL file keys
+URL           = "url"
+RECURSIVE     = "recursive"
+EXPORT        = "export"
+PLUCK         = "pluck"
+REPO          = "repo"
+LOCAL_IMPORT  = "local_import"

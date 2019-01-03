@@ -1,0 +1,18 @@
+# FIXME windows support
+# TODO alternative for windows
+
+# where repo exists
+REPOSITORY_HOME = "%AppData%/Roaming/.mp/packages/"
+
+#  location of machu-picchu
+MP_HOME = "%ProgramFiles%/mp/"
+
+# where the packages installed from repositories go
+INSTALL_HOME = MP_HOME
+
+# where the symlink to the installed packages(from repo) exist
+BIN_HOME = os.getenv("CMDER_ROOT") .. "/bin"
+
+# for dependency management
+DEFAULT_PATH           = "./"
+DEFAULT_SAVE_DIRECTORY = ".mp/"

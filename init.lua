@@ -1,6 +1,26 @@
 #!/usr/bin/env torchbear
 
-require("config")
+function get_table_from(path, name)
+  name = name or "/import.scl"
+  -- todo: fix path handling
+  local scl_file = fs.read_file(path .. name)
+  return scl.to_table(scl_file)
+end
+
+function table.merge( dest, source )
+  for k, v in pairs( source ) do
+    if ( type( v ) == "table" and type( dest[ k ] ) == "table" ) then
+      -- don't overwrite one table with another
+      -- instead merge them recurisvely
+      table.merge( dest[ k ], v )
+    else
+      dest[ k ] = v
+    end
+  end
+  return dest
+end
+
+require("configs/config")
 
 -- todo: fs: add `basename` function
 local argv0 = string.match(table.remove(arg, 1), "[^/\\]+$")
@@ -19,20 +39,13 @@ local function usage(f)
 end
 
 function fetch(url, rep_name, save_dir)
-  save_dir = save_dir or DEFAULT_SAVE_DIRECTORY
-  if fs.exists(save_dir .. rep_name) then 
-	return 
+  save_dir = save_dir or config["DEFAULT_SAVE_DIRECTORY"]
+  if fs.exists(save_dir .. rep_name) then
+    return
   end
   -- TODO: use log
   print("Cloning: " .. url)
   git.clone(url, save_dir .. rep_name)
-end
-
-function get_table_from(path, name)
-  name = name or "/import.scl"
-  -- todo: fix path handling
-  local scl_file = fs.read_file(path .. name)
-  return scl.to_table(scl_file)
 end
 
 local cmd = table.remove(arg, 1)
@@ -48,7 +61,7 @@ if #arg ~= 0 then
   usage()
 end
 
-if cmd ~= "refresh" and fs.exists(REPOSITORY_HOME) == false then
+if cmd ~= "refresh" and fs.exists(config["REPOSITORY_HOME"]) == false then
     print("You have to first run: ./mp refresh")
     return
 end
