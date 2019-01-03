@@ -1,30 +1,6 @@
 #!/usr/bin/env torchbear
 
--- Machu Picchu
--- a general-purpose package manager
-
--- FIXME windows support
-REPOSITORY_HOME = os.getenv("HOME") .. "/.mp/packages/"
-MANIFEST_FILE = "manifest.scl"
-REPOSITORY_URL = "https://github.com/foundpatterns/packages"
--- TODO alternative for windows
--- requires sudo 
-MP_HOME = "/usr/share/mp/"
-INSTALL_HOME = "/usr/share/"
--- INSTALL_HOME = os.getenv("HOME") .. "/.mp/"
-BIN_HOME = "/usr/bin/"
-
-DEFAULT_PATH           = "./"
-DEFAULT_SAVE_DIRECTORY = ".mp/"
-
--- SCL file keys
-URL       = "url"
-RECURSIVE = "recursive"
-EXPORT    = "export"
-PLUCK     = "pluck"
-REPO 	  = "repo"
-LOCAL_IMPORT = "local_import"
-
+require("config")
 
 -- todo: fs: add `basename` function
 local argv0 = string.match(table.remove(arg, 1), "[^/\\]+$")
