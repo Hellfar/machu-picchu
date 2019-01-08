@@ -2,16 +2,29 @@
 # TODO alternative for windows
 
 # where repo exists
-REPOSITORY_HOME = "%AppData%/Roaming/.mp/packages/"
+# REPOSITORY_HOME = "%AppData%/Roaming/.mp/packages/"
+REPOSITORY_HOME =  [
+  ${CMDER_ROOT},
+  "/.mp/packages/"
+]
 
 #  location of machu-picchu
-MP_HOME = "%ProgramFiles%/mp/"
+MP_HOME = [
+  ${CMDER_ROOT},
+  "/bin"
+]
 
 # where the packages installed from repositories go
-INSTALL_HOME = MP_HOME
+INSTALL_HOME = [
+  ${CMDER_ROOT},
+  "/bin"
+]
 
 # where the symlink to the installed packages(from repo) exist
-BIN_HOME = os.getenv("CMDER_ROOT") .. "/bin"
+BIN_HOME = [
+  ${CMDER_ROOT},
+  "/bin"
+]
 
 # for dependency management
 DEFAULT_PATH           = "./"

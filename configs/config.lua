@@ -13,6 +13,10 @@ function append_config(path, name)
   config = table.merge(config, get_table_from(path, name))
   return config
 end
+function join_path(var_name)
+  config[var_name] = table.concat(config[var_name])
+  return config
+end
 
 append_config(CONFIG_FILES_PATH, BASE_CONF)
 
@@ -23,3 +27,8 @@ elseif torchbear.os == "windows" then
 elseif torchbear.os == "android" then
   append_config(CONFIG_FILES_PATH, ANDROID_CONF)
 end
+
+join_path("REPOSITORY_HOME")
+join_path("MP_HOME")
+join_path("INSTALL_HOME")
+join_path("BIN_HOME")

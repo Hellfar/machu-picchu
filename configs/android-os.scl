@@ -1,14 +1,17 @@
 # where repo exists
-REPOSITORY_HOME =  "${HOME}/.mp/packages/"
+REPOSITORY_HOME =  [
+  ${HOME},
+  "/.mp/packages/"
+]
 
 #  location of machu-picchu
-MP_HOME = "/data/data/com.termux/files/usr/local/machu-picchu/"
+MP_HOME = ["/data/data/com.termux/files/usr/local/machu-picchu/"]
 
 # where the packages installed from repositories go
-INSTALL_HOME = "/data/data/com.termux/files/usr/local/"
+INSTALL_HOME = ["/data/data/com.termux/files/usr/local/"]
 
 # where the symlink to the installed packages(from repo) exist
-BIN_HOME = "/data/data/com.termux/files/usr/bin"
+BIN_HOME = ["/data/data/com.termux/files/usr/bin"]
 
 # for dependency management
 DEFAULT_PATH           = "./"
